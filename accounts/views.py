@@ -12,7 +12,11 @@ def login(request) :
         user = auth.authenticate(username = request.POST['email'],password = request.POST['password'] )
         if user is not None:
             auth.login(request,user)
-            return redirect('dashboard')
+            if user.is_analis:
+                return redirect('dashboard')
+            else if user.is_surveyor:
+                return redirect('home')
+
         else:
             return render(request,'account/login.html',{'error':'Cek Username dan Password anda'})
     else:
