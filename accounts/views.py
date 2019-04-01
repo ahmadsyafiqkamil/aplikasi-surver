@@ -14,9 +14,8 @@ def login(request) :
             auth.login(request,user)
             if user.is_analis:
                 return redirect('dashboard')
-            else if user.is_surveyor:
+            elif user.is_surveyor:
                 return redirect('home')
-
         else:
             return render(request,'account/login.html',{'error':'Cek Username dan Password anda'})
     else:

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
-    'analis.apps.AnalisConfig'
+    'analis.apps.AnalisConfig',
+    'surveyor.apps.SurveyorConfig'
 ]
 
 MIDDLEWARE = [
