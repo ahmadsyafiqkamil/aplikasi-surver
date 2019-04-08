@@ -148,3 +148,9 @@ class User(AbstractBaseUser):
     def is_surveyor(self):
         "Is the user active?"
         return self.surveyor
+
+# class analis(models.Model):
+    # user = models.OneToOneField(User, on_delete = models.CASCADE)
+#
+# class surveyor(models.Model):
+#     user = models.OneToOneField(User, on_delete = models.CASCADE)
