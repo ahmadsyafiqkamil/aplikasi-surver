@@ -7,7 +7,7 @@ from accounts.models import User
 
 # Create your models here.
 class proyek(models.Model):
-    nama = models.CharField(max_length = 255, blank = True, verbose_name = "Nama Proyek")
+    nama = models.CharField(max_length = 255, verbose_name = "Nama Proyek")
     deskripsi = models.TextField(verbose_name = "Deskripsi Proyek");
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     # id_user = models.ForeignKey(analis,on_delete = models.CASCADE)
@@ -27,7 +27,7 @@ class perangkat(models.Model):
 
 class organisasi(models.Model):
     nama_organisasi = models.CharField(max_length = 255, blank = True)
-    id_proyek = models.ForeignKey(proyek, on_delete=models.CASCADE)
+    proyek = models.ForeignKey(proyek, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.nama_organisasi

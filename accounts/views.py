@@ -12,7 +12,7 @@ def login(request) :
         user = auth.authenticate(email = request.POST['email'],password = request.POST['password'] )
         if user is not None:
             auth.login(request,user)
-            if user.is_analis:
+            if user.is_analis | user.is_admin:
                 return redirect('dashboard')
             elif user.is_surveyor:
                 return redirect('home')
