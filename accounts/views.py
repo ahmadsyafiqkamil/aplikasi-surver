@@ -9,7 +9,7 @@ from .models import User
 def login(request) :
     if request.method == 'POST':
 
-        user = auth.authenticate(username = request.POST['email'],password = request.POST['password'] )
+        user = auth.authenticate(email = request.POST['email'],password = request.POST['password'] )
         if user is not None:
             auth.login(request,user)
             if user.is_analis:
