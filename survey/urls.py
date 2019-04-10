@@ -21,4 +21,5 @@ urlpatterns = [
     path('',include('accounts.urls')),
     path('',include('analis.urls')),
     path('',include('surveyor.urls')),
+    path('',include('projectmanajer.urls'))
 ]

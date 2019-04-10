@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts.apps.AccountsConfig',
     'analis.apps.AnalisConfig',
-    'surveyor.apps.SurveyorConfig'
+    'surveyor.apps.SurveyorConfig',
+    'projectmanajer.apps.ProjectmanajerConfig',
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ LOGOUT_REDIRECT_URL = 'home'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATICFILES_DIRS = [
- os.path.join(BASE_DIR, 'survey/static/')
+    os.path.join(BASE_DIR, 'survey/static/')
 ]
 
 STATIC_URL = '/static/'

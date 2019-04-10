@@ -132,7 +132,7 @@ $(function () {
         // Load data
         // ------------------------------
 
-        d3.csv("assets/demo_data/dashboard/traffic_sources.csv", function (error, data) {
+        d3.csv("assets/demo_data/analis/traffic_sources.csv", function (error, data) {
 
             // Pull out values
             data.forEach(function (d) {

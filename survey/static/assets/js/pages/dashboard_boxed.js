@@ -182,7 +182,7 @@ $(function() {
         // Load data
         // ------------------------------
 
-        d3.csv("assets/demo_data/dashboard/traffic_sources.csv", function (error, data) {
+        d3.csv("assets/demo_data/analis/traffic_sources.csv", function (error, data) {
 
             // Pull out values
             data.forEach(function (d) {
@@ -581,7 +581,7 @@ $(function() {
         // Load data
         // ------------------------------
 
-        d3.csv("assets/demo_data/dashboard/app_sales.csv", function(error, data) {
+        d3.csv("assets/demo_data/analis/app_sales.csv", function(error, data) {
             formatted = data;
             redraw();
         });
@@ -977,7 +977,7 @@ $(function() {
         // Load data
         // ------------------------------
 
-        d3.json("assets/demo_data/dashboard/monthly_sales.json", function (error, data) {
+        d3.json("assets/demo_data/analis/monthly_sales.json", function (error, data) {
 
             // Show what's wrong if error
             if (error) return console.error(error);
@@ -1281,7 +1281,7 @@ $(function() {
         // Load data
         // ------------------------------
 
-        d3.json("assets/demo_data/dashboard/monthly_sales.json", function (error, data) {
+        d3.json("assets/demo_data/analis/monthly_sales.json", function (error, data) {
 
             // Show what's wrong if error
             if (error) return console.error(error);

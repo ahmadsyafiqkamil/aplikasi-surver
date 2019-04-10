@@ -3,5 +3,5 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 @login_required
-def home(request):
+def dashboard(request):
     return render(request,'surveyor/home.html')
