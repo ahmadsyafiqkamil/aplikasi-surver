@@ -12,16 +12,14 @@ def login(request) :
 		user = auth.authenticate(email = request.POST['email'],password = request.POST['password'] )
 		if user is not None:
 			auth.login(request,user)
-			# if user.is_analis :
-			# 	return redirect('dashboard_analis')
-			# elif user.is_surveyor:
-			# 	return redirect('dashboard_surveyor')
-			# elif user.is_staff:
-			# 	return redirect('dashboard_pm')
+			request.session['login'] = user.get_full_name
 			
 			if user.is_staff:
 				return redirect('dashboard_pm')
-				
+			elif user.is_analis:
+				return redirect("dashboard_analis")
+			else:
+				return redirect("dashboard_surveyor")
 		else:
 			return render(request,'account/login.html',{'error':'Cek Username dan Password anda'})
 	else:

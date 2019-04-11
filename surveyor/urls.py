@@ -2,6 +2,6 @@ from . import views
 from django.urls import path, include
 
 urlpatterns = [
-    path('analis',views.dashboard, name='dashboard_surveyor'),
+    path('dashboard/',views.dashboard, name='dashboard_surveyor'),
 
 ]
