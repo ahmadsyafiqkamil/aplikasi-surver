@@ -8,3 +8,11 @@ def dashboard(request):
         return render(request, 'pm/dashboard.html')
     else:
         return redirect('login')
+    
+@login_required
+def proyek(request):
+    return render(request,'pm/proyek.html')
+
+@login_required
+def perangkat(request):
+    return render(request,'pm/perangkat.html')

@@ -5,6 +5,6 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def dashboard(request):
     if request.session.has_key('login'):
-        return render(request, 'surveyor/dashboard.html')
+        return render(request, 'surveyor/home.html')
     else:
         return redirect('login')

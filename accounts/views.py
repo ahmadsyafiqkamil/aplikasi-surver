@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-# from django.contrib.auth.models import User
+from django.http import Http404
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from .models import User
@@ -12,18 +12,20 @@ def login(request) :
 		user = auth.authenticate(email = request.POST['email'],password = request.POST['password'] )
 		if user is not None:
 			auth.login(request,user)
-			request.session['login'] = user.get_full_name
-			
+			request.session['login'] = user.get_full_name()
 			if user.is_staff:
 				return redirect('dashboard_pm')
 			elif user.is_analis:
 				return redirect("dashboard_analis")
-			else:
+			elif user.is_surveyor:
 				return redirect("dashboard_surveyor")
+			else:
+				raise Http404("Halaman yang anda cari tidak ada")
 		else:
 			return render(request,'account/login.html',{'error':'Cek Username dan Password anda'})
 	else:
 		return render(request,'account/login.html')
+
 
 def register(request) :
 	if request.method == 'POST':

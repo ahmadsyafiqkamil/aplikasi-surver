@@ -175,11 +175,9 @@
                             {% if user.is_staff %}
                                 <li><a href="{% url 'dashboard_pm' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                             <li>
-                                <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
-                                <ul>
-{#                                    <li><a href="{%url 'organisasi'%}"><i class="glyphicon glyphicon-th"></i>New Organization</a></li>#}
-{#                                    <li><a href="{%url 'perangkat'%}"><i class="glyphicon glyphicon-th-list"></i>New Tools</a></li>#}
-                                </ul>
+                                <a href="{% url 'proyek_pm' %}"><i class="icon-stack2"></i> <span>Proyek</span></a>
+                                <li><a href="{%url 'perangkat_pm'%}"><i class="glyphicon glyphicon-th-list"></i>Perangkat</a></li>
+
                             </li>
 
                             {% elif user.is_analis %}
@@ -192,7 +190,7 @@
                                 </ul>
                             </li>
 
-                            {% else %}
+                            {% elif user.is_surveyor %}
                                 <li><a href="{% url 'dashboard_surveyor' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
                             <li>
                                 <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
