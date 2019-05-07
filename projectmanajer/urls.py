@@ -1,9 +1,10 @@
 from . import views
 from django.urls import path
 
+app_name = 'pm'
 urlpatterns = [
-    path('dashboard_pm/',views.dashboard, name='dashboard_pm'),
-    path('proyek/',views.dashboard, name='proyek_pm'),
-    path('perangkat/',views.dashboard, name='perangkat_pm'),
+    path('dashboard/',views.dashboard, name='dashboard'),
+    path('proyek/',views.proyek, name='proyek'),
+    path('perangkat/',views.perangkat, name='perangkat'),
 
 ]

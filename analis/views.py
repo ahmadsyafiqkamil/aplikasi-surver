@@ -7,5 +7,5 @@ def dashboard(request):
     if request.session.has_key('login'):
         return render(request, 'analis/dashboard.html')
     else:
-        return redirect('login')
+        return redirect('accounts:login')
 

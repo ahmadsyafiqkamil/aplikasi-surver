@@ -22,6 +22,7 @@ class proyek(models.Model):
 class perangkat(models.Model):
 	perangkat = JSONField()
 	proyek = models.ForeignKey(proyek, on_delete=models.CASCADE)
+	penanggung_jawab = models.CharField(max_length=50, verbose_name="Nama Penanggung Jawab")
 	
 	def __str__(self):
 		return self.perangkat
@@ -30,6 +31,7 @@ class perangkat(models.Model):
 class organisasi(models.Model):
 	nama_organisasi = models.CharField(max_length=255, blank=True)
 	proyek = models.ForeignKey(proyek, on_delete=models.CASCADE)
+	narasumber = models.CharField(max_length=50, verbose_name="Narasumber")
 	
 	def __str__(self):
 		return self.nama_organisasi

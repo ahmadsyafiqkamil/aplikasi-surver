@@ -1,57 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {%load staticfiles%}
+    {% load staticfiles %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Aplikasi Survey</title>
 
     <!-- Global stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/icons/icomoon/styles.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/bootstrap.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/core.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/components.css'%}" rel="stylesheet" type="text/css">
-    <link href="{% static 'assets/css/colors.css'%}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link href="{% static 'assets/css/icons/icomoon/styles.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/bootstrap.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'assets/css/colors.css' %}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
-    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/pace.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/pace.min.js' %}"></script>
     <!-- <script type="text/javascript" src="{% static 'assets/js/core/libraries/jquery.min.js'%}"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="{% static 'assets/js/core/libraries/bootstrap.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/blockui.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/nicescroll.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/drilldown.js'%}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/libraries/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/loaders/blockui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/nicescroll.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/drilldown.js' %}"></script>
     <!-- /core JS files -->
 
     <!-- Theme JS files -->
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/prism.min.js'%}"></script>
-    <script type="text/javascript" src="{% static 'assets/js/core/app.js'%}"></script>
-
-    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/ripple.min.js'%}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/prism.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/core/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/pages/form_layouts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/pages/form_inputs.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/ui/ripple.min.js' %}"></script>
     <!-- /theme JS files -->
     <!-- Surveyjs -->
 
     {% if user.is_analis or user.is_admin %}
-        <script src="{% static 'assets/js/plugins/survey/knockout-min.js'%}"></script>
-        <script src="{% static 'assets/js/plugins/survey/survey.ko.js'%}"></script>
-        <script src="{% static 'assets/js/plugins/survey/ace.min.js'%}" type="text/javascript" charset="utf-8"></script>
-        <script src="{% static 'assets/js/plugins/survey/worker-json.js'%}" type="text/javascript" charset="utf-8"></script>
-        <script src="{% static 'assets/js/plugins/survey/mode-json.js'%}" type="text/javascript" charset="utf-8"></script>
-        <script src="{% static 'assets/js/plugins/forms/selects/select2.min.js'%}"></script>
-        <script src="{% static 'assets/js/plugins/survey/surveyeditor.js'%}"></script>
+        <script src="{% static 'assets/js/plugins/survey/knockout-min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins/survey/survey.ko.js' %}"></script>
+        <script src="{% static 'assets/js/plugins/survey/ace.min.js' %}" type="text/javascript"
+                charset="utf-8"></script>
+        <script src="{% static 'assets/js/plugins/survey/worker-json.js' %}" type="text/javascript"
+                charset="utf-8"></script>
+        <script src="{% static 'assets/js/plugins/survey/mode-json.js' %}" type="text/javascript"
+                charset="utf-8"></script>
+        <script src="{% static 'assets/js/plugins/forms/selects/select2.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins/survey/surveyeditor.js' %}"></script>
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-        <link href="{% static 'assets/css/survey/surveyeditor.css'%}" type="text/css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet"/>
+        <link href="{% static 'assets/css/survey/surveyeditor.css' %}" type="text/css" rel="stylesheet"/>
 
     {% elif user.is_surveyor %}
-        <link href="{% static 'assets/css/survey/survey.css' %}" type="text/css" rel="stylesheet" />
-        <script src="{% static 'assets/js/plugins/survey/survey.jquery.min.js'%}"></script>
-        <script src="{% static 'assets/js/plugins/survey/popper.min.js' %}" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-{#        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
+        <link href="{% static 'assets/css/survey/survey.css' %}" type="text/css" rel="stylesheet"/>
+        <script src="{% static 'assets/js/plugins/survey/survey.jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/plugins/survey/popper.min.js' %}"
+                integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+                crossorigin="anonymous"></script>
+        {#        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>#}
     {% endif %}
 </head>
 
@@ -60,7 +67,7 @@
 <!-- Main navbar -->
 <div class="navbar navbar-inverse bg-indigo">
     <div class="navbar-header">
-        <a class="navbar-brand" href="index.html"><img src="{% static 'assets/images/logo_light.png'%}" alt=""></a>
+        <a class="navbar-brand" href="index.html"><img src="{% static 'assets/images/logo_light.png' %}" alt=""></a>
 
         <ul class="nav navbar-nav pull-right visible-xs-block">
             <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
@@ -71,14 +78,14 @@
     <div class="navbar-collapse collapse" id="navbar-mobile">
         <ul class="nav navbar-nav">
             <li>
-                <a class="sidebar-control sidebar-main-toggle hidden-xs" data-popup="tooltip" title="Collapse main" data-placement="bottom" data-container="body">
+                <a class="sidebar-control sidebar-main-toggle hidden-xs" data-popup="tooltip" title="Collapse main"
+                   data-placement="bottom" data-container="body">
                     <i class="icon-paragraph-justify3"></i>
                 </a>
             </li>
 
 
         </ul>
-
 
 
         <ul class="nav navbar-nav navbar-right">
@@ -92,8 +99,9 @@
 
                 <ul class="dropdown-menu dropdown-menu-right">
                     <li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
-                    <li><a href="javascript:{document.getElementById('logout').submit()}"><i class="icon-switch2"></i> Logout</a>
-                        <form id="logout" action="{%url 'logout'%}" method="POST">
+                    <li><a href="javascript:{document.getElementById('logout').submit()}"><i class="icon-switch2"></i>
+                        Logout</a>
+                        <form id="logout" action="{% url 'accounts:logout' %}" method="POST">
                             {% csrf_token %}
                             <input type="hidden">
                         </form>
@@ -105,8 +113,6 @@
     </div>
 </div>
 <!-- /main navbar -->
-
-
 
 
 <!-- Page header -->
@@ -149,7 +155,8 @@
                     <div class="sidebar-user-material">
                         <div class="category-content">
                             <div class="sidebar-user-material-content">
-                                <a href="#"><img src="{% static 'assets/images/placeholder.jpg'%}" class="img-circle img-responsive" alt=""></a>
+                                <a href="#"><img src="{% static 'assets/images/placeholder.jpg' %}"
+                                                 class="img-circle img-responsive" alt=""></a>
                                 <h6>Victoria Baker</h6>
                                 <span class="text-size-small">Santa Ana, CA</span>
                             </div>
@@ -171,34 +178,45 @@
                         <ul class="navigation navigation-main navigation-accordion">
 
                             <!-- Main -->
-                            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i></li>
-                            {% if user.is_staff %}
-                                <li><a href="{% url 'dashboard_pm' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                            <li>
-                                <a href="{% url 'proyek_pm' %}"><i class="icon-stack2"></i> <span>Proyek</span></a>
-                                <li><a href="{%url 'perangkat_pm'%}"><i class="glyphicon glyphicon-th-list"></i>Perangkat</a></li>
-
+                            <li class="navigation-header"><span>Main</span> <i class="icon-menu" title="Main pages"></i>
                             </li>
+                            {% if user.is_staff %}
+                                <li><a href="{% url 'pm:dashboard' %}"><i class="icon-home4"></i> <span>Dashboard</span></a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
+                                    <ul>
+                                        <li><a href="{% url 'pm:proyek' %}"><i class="icon-stack2"></i>
+                                            <span>Proyek</span></a></li>
+
+                                    </ul>
+                                <li><a href="{% url 'pm:perangkat' %}"><i class="glyphicon glyphicon-th-list"></i>Perangkat</a>
+                                </li>
+
+
+                                </li>
 
                             {% elif user.is_analis %}
-                                <li><a href="{% url 'dashboard_analis' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                            <li>
-                                <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
-                                <ul>
-{#                                    <li><a href="{%url 'organisasi'%}"><i class="glyphicon glyphicon-th"></i>New Organization</a></li>#}
-{#                                    <li><a href="{%url 'perangkat'%}"><i class="glyphicon glyphicon-th-list"></i>New Tools</a></li>#}
-                                </ul>
-                            </li>
+                                <li><a href="{% url 'analis:dashboard' %}"><i class="icon-home4"></i>
+                                    <span>Dashboard</span></a></li>
+                                <li>
+                                    <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
+                                    <ul>
+                                        {#                                    <li><a href="{%url 'organisasi'%}"><i class="glyphicon glyphicon-th"></i>New Organization</a></li>#}
+                                        {#                                    <li><a href="{%url 'perangkat'%}"><i class="glyphicon glyphicon-th-list"></i>New Tools</a></li>#}
+                                    </ul>
+                                </li>
 
                             {% elif user.is_surveyor %}
-                                <li><a href="{% url 'dashboard_surveyor' %}"><i class="icon-home4"></i> <span>Dashboard</span></a></li>
-                            <li>
-                                <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
-                                <ul>
-{#                                    <li><a href="{%url 'organisasi'%}"><i class="glyphicon glyphicon-th"></i>New Organization</a></li>#}
-{#                                    <li><a href="{%url 'perangkat'%}"><i class="glyphicon glyphicon-th-list"></i>New Tools</a></li>#}
-                                </ul>
-                            </li>
+                                <li><a href="{% url 'surveyor:dashboard' %}"><i class="icon-home4"></i>
+                                    <span>Dashboard</span></a></li>
+                                <li>
+                                    <a href="#"><i class="icon-stack2"></i> <span>New Project</span></a>
+                                    <ul>
+                                        {#                                    <li><a href="{%url 'organisasi'%}"><i class="glyphicon glyphicon-th"></i>New Organization</a></li>#}
+                                        {#                                    <li><a href="{%url 'perangkat'%}"><i class="glyphicon glyphicon-th-list"></i>New Tools</a></li>#}
+                                    </ul>
+                                </li>
 
                             {% endif %}
 
@@ -215,8 +233,9 @@
         </div>
         <!-- /main sidebar -->
 
-        {%block content%}
-        {%endblock%}
+        {% block content %}
+
+        {% endblock %}
     </div>
     <!-- /page content -->
 
@@ -226,7 +245,7 @@
 
 <!-- Footer -->
 <div class="footer text-muted">
-    &copy; {%now "Y"%}. <a href="#">Ahmad Syafiq Kamil</a>
+    &copy; {% now "Y" %}. <a href="#">Ahmad Syafiq Kamil</a>
 </div>
 <!-- /footer -->
 

@@ -14,11 +14,11 @@ def login(request) :
 			auth.login(request,user)
 			request.session['login'] = user.get_full_name()
 			if user.is_staff:
-				return redirect('dashboard_pm')
+				return redirect('pm:dashboard')
 			elif user.is_analis:
-				return redirect("dashboard_analis")
+				return redirect("analis:dashboard")
 			elif user.is_surveyor:
-				return redirect("dashboard_surveyor")
+				return redirect("surveyor:dashboard")
 			else:
 				raise Http404("Halaman yang anda cari tidak ada")
 		else:
@@ -36,7 +36,7 @@ def register(request) :
 			except User.DoesNotExist:
 				user = User.objects.create_user(email = request.POST['email'],password = request.POST['ps1'])
 				auth.login(request,user)
-				return redirect('login')
+				return redirect('accounts:login')
 		else:
 			return render(request,'account/register.html',{'errorps':'password tidak sama'})
 	else :
@@ -45,4 +45,4 @@ def register(request) :
 def logout(request):
 	if request.method == 'POST':
 		auth.logout(request)
-		return redirect('login')
+		return redirect('accounts:login')

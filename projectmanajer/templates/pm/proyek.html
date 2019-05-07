@@ -1,27 +1,130 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 
-{%block content%}
-<div class="content-wrapper">
+{% block content %}
+    <div class="content-wrapper">
 
-<!-- Sidebars overview -->
-  <div class="panel panel-success ">
-    <div class="panel-heading">
-      <h5 class="panel-title">PM</h5>
-      <div class="heading-elements">
-        <ul class="icons-list">
-          <li><a data-action="collapse"></a></li>
-          <li><a data-action="reload"></a></li>
-          <li><a data-action="close"></a></li>
-        </ul>
-      </div>
+        <!-- Sidebars overview -->
+        <div class="panel panel-success ">
+            <div class="panel-heading">
+                <h5 class="panel-title">Project</h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="panel-body">
+
+                <form class="form-horizontal" action="{% url 'pm:dashboard' %}" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="content-group">
+                        <legend class="text-bold">Basic selects</legend>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Nama Proyek</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="nama_proyek" placeholder="Masukkan Nama Proyek">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">Nama Penanggung Jawab</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="nama_pj_proyek" placeholder="Masukkan Nama Penanggung Jawab">
+                            </div>
+                        </div>
+
+                        <div id="itemOrganisasi">
+                            <div class="form-group">
+                                <label class="control-label col-lg-2">Organisasi</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" name="organisasi[0]" placeholder="Masukkan Organisasi">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="col-lg-12 text-right">
+                            <label class="display-block text-semibold">
+                                <button type="button" class="btn bg-blue" onclick="additem_pegawai_diusulkan();">
+                                    Tambah Organisasi
+                                    <i class="glyphicon glyphicon-tasasition-right"></i></button>
+
+                            </label>
+                        </div>
+
+                        <div class="col-lg-12 text-right">
+                            <label class="display-block text-semibold">
+                                <button type="submit" class="btn bg-blue">
+                                    Submit
+                                    <i class="glyphicon glyphicon-tasasition-right"></i></button>
+
+                            </label>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- /sidebar classes -->
+
     </div>
+    <script>
 
-    <div class="panel-body">
-        proyek PM
-    </div>
-  </div>
+        var i = 1;
+        function additem_pegawai_diusulkan() {
+            //                menentukan target append
+            var itemOrganisasi = document.getElementById('itemOrganisasi');
 
-  <!-- /sidebar classes -->
+            var divForm = document.createElement('div');
+            var labelOrganisasi = document.createElement('label');
+            var divInput = document.createElement('div');
+            var divHapus = document.createElement('div');
 
-</div>
-{%endblock%}
+
+            itemOrganisasi.appendChild(divForm);
+
+            divForm.appendChild(labelOrganisasi);
+            divForm.appendChild(divInput);
+
+            divForm.appendChild(divHapus);
+
+
+            divForm.setAttribute('class','form-group');
+            labelOrganisasi.setAttribute('class','control-label col-lg-2');
+            divInput.setAttribute('class','col-lg-9');
+
+            labelOrganisasi.innerHTML = "Organisasi";
+
+            var inputOrganisasi = document.createElement('input');
+            inputOrganisasi.setAttribute('class','form-control');
+            inputOrganisasi.setAttribute('type','text');
+            inputOrganisasi.setAttribute('placeholder','Masukkan Organisasi');
+            inputOrganisasi.setAttribute('name','organisasi['+i+']');
+
+
+            var hapus = document.createElement('span');
+
+            divInput.appendChild(inputOrganisasi);
+            divHapus.appendChild(hapus);
+
+            hapus.innerHTML = '<button class="btn btn-xs btn-danger"><i class="icon-trash"></i></button>';
+            //                membuat aksi delete element
+            hapus.onclick = function () {
+                divForm.parentNode.removeChild(divForm);
+            };
+
+            i++;
+
+
+
+        }
+    </script>
+
+{% endblock %}

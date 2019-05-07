@@ -8,7 +8,7 @@
 
     <!-- Simple login form -->
 
-    <form action="{%url 'login'%}" method="POST">
+    <form action="{%url 'accounts:login'%}" method="POST">
       {% csrf_token %}
       <div class="panel panel-body login-form">
         {%if error%}
@@ -38,7 +38,7 @@
         </div>
 
         <div class="text-center">
-          <a href="{%url 'register'%}">Register</a>
+          <a href="{%url 'accounts:register'%}">Register</a>
         </div>
       </div>
     </form>
