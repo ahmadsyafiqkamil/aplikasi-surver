@@ -154,6 +154,14 @@ class User(AbstractBaseUser):
         "Is the user active?"
         return self.surveyor
 
+class LoggedInUser(models.Model):
+    user = models.OneToOneField(User, related_name='logged_in_user', on_delete=models.CASCADE)
+    session_key = models.CharField(max_length=32, null=True,blank=True)
+    
+    def __str__(self):
+        return self.user.get_full_name
+    
+    
 # class analis(models.Model):
 #     user = models.OneToOneField(User, on_delete = models.CASCADE)
 #

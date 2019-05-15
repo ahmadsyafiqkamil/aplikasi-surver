@@ -29,6 +29,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	# default apps
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
@@ -36,10 +37,13 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'accounts.apps.AccountsConfig',
+	# owns app
 	'projectmanajer.apps.ProjectmanajerConfig',
 	'analis.apps.AnalisConfig',
 	'surveyor.apps.SurveyorConfig',
 
+	# downloaded apps
+	# 'extra_views',
 ]
 
 MIDDLEWARE = [
@@ -118,13 +122,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_URL = 'login'
+LOGIN_URL = 'accounts:login'
 
-LOGOUT_URL = 'logout'
+LOGOUT_URL = 'accounts:logout'
 
-LOGIN_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = 'accounts:login'
 
-LOGOUT_REDIRECT_URL = 'login'
+LOGOUT_REDIRECT_URL = 'accounts:logout'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -138,3 +142,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# caches
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}

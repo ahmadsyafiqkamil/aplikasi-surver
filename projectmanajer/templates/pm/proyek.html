@@ -18,31 +18,55 @@
 
             <div class="panel-body">
 
-                <form class="form-horizontal" action="{% url 'pm:dashboard' %}" method="POST">
+                <form class="form-horizontal" action="{% url 'pm:proyek' %}" method="POST">
                     {% csrf_token %}
                     <fieldset class="content-group">
-                        <legend class="text-bold">Basic selects</legend>
+                        <legend class="text-bold">Proyek</legend>
 
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Nama Proyek</label>
+
+                            <label class="control-label col-lg-2">{{ formProyek.nama.label }}</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama_proyek" placeholder="Masukkan Nama Proyek">
+                                {{ formProyek.nama }}
+
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label col-lg-2">Nama Penanggung Jawab</label>
+                            <label class="control-label col-lg-2">{{ formProyek.user.label }}</label>
                             <div class="col-lg-10">
-                                <input type="text" class="form-control" name="nama_pj_proyek" placeholder="Masukkan Nama Penanggung Jawab">
+                                {{ formProyek.user }}
+
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">{{ formProyek.pjProyek.label }}</label>
+                            <div class="col-lg-10">
+                                {{ formProyek.pjProyek }}
 
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-lg-2">{{ formProyek.deskripsi.label }}</label>
+                            <div class="col-lg-10">
+                                {{ formProyek.deskripsi }}
+
+                            </div>
+                        </div>
                         <div id="itemOrganisasi">
                             <div class="form-group">
-                                <label class="control-label col-lg-2">Organisasi</label>
-                                <div class="col-lg-10">
-                                    <input type="text" class="form-control" name="organisasi[0]" placeholder="Masukkan Organisasi">
-                                </div>
+
+                                {{ formOrganisasi.management_form }}
+                                {% for form in formOrganisasi %}
+
+                                    <label class="control-label col-lg-2">{{ form.nama_organisasi.label }}</label>
+                                    <div class="col-lg-10">
+                                        {{ form.nama_organisasi }}
+
+                                    </div>
+
+                                {% endfor %}
+
                             </div>
 
                         </div>
@@ -75,9 +99,15 @@
         <!-- /sidebar classes -->
 
     </div>
+
+
+{% endblock %}
+
+{% block costum_js %}
     <script>
 
         var i = 1;
+
         function additem_pegawai_diusulkan() {
             //                menentukan target append
             var itemOrganisasi = document.getElementById('itemOrganisasi');
@@ -96,17 +126,18 @@
             divForm.appendChild(divHapus);
 
 
-            divForm.setAttribute('class','form-group');
-            labelOrganisasi.setAttribute('class','control-label col-lg-2');
-            divInput.setAttribute('class','col-lg-9');
+            divForm.setAttribute('class', 'form-group');
+            labelOrganisasi.setAttribute('class', 'control-label col-lg-2');
+            divInput.setAttribute('class', 'col-lg-9');
 
             labelOrganisasi.innerHTML = "Organisasi";
 
             var inputOrganisasi = document.createElement('input');
-            inputOrganisasi.setAttribute('class','form-control');
-            inputOrganisasi.setAttribute('type','text');
-            inputOrganisasi.setAttribute('placeholder','Masukkan Organisasi');
-            inputOrganisasi.setAttribute('name','organisasi['+i+']');
+            inputOrganisasi.setAttribute('class', 'form-control');
+            inputOrganisasi.setAttribute('type', 'text');
+            inputOrganisasi.setAttribute('placeholder', 'Masukkan Organisasi');
+            inputOrganisasi.setAttribute('name', 'form-[' + i + ']-nama_organisasi');
+            inputOrganisasi.setAttribute('id', 'id_form-[' + i + ']-nama_organisasi');
 
 
             var hapus = document.createElement('span');
@@ -123,8 +154,6 @@
             i++;
 
 
-
         }
     </script>
-
 {% endblock %}
