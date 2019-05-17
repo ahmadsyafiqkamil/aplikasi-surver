@@ -6,34 +6,6 @@ from .form import proyekForm, organisasiFormSet
 from .models import organisasi, proyek
 
 
-# from extra_views import FormSetView
-
-
-# Create your views here.
-# @login_required
-# def dashboard(request):
-#     return render(request,'pm/dashboard.html')
-# if request.session.has_key('login'):
-#     if request.method == 'POST':
-#         nama_proyek = request.POST['nama_proyek']
-#         nama_pj_proyek= request.POST['nama_pj_proyek']
-#
-#         print(nama_proyek)
-#         print(nama_pj_proyek)
-#
-#         return redirect('pm:dashboard')
-#
-#
-#     else:
-#         return redirect('pm:dashboard')
-# else:
-#     return redirect('accounts:login')
-#
-#
-# @login_required
-# def perangkat(request):
-#     return render(request,'pm/perangkat.html')
-
 class listOrganisasiView(ListView):
 	model = proyek
 	context_object_name = 'proyeks'
@@ -48,16 +20,13 @@ def proyek(request):
 		formProyek = proyekForm(request.POST)
 		formOrganisasi = organisasiFormSet(request.POST)
 		if formProyek.is_valid() and formOrganisasi.is_valid():
-			pr = formProyek.save()
-			
-			for frOrg in formOrganisasi:
-				org = frOrg.save(commit=False)
-				org.proyek = pr
-				org.save()
+			proyeks = formProyek.save()
+			for form in formOrganisasi:
+				dataOrganisasi= form.save(commit=False)
+				dataOrganisasi.proyek = proyeks
+				dataOrganisasi.save()
+				# print(dataOrganisasi)
 			return redirect('pm:list_organisasi')
-		else:
-			print(formProyek.errors)
-			print(formOrganisasi.errors)
 	return render(request, 'pm/proyek.html', {
 		'formProyek': formProyek,
 		'formOrganisasi': formOrganisasi,

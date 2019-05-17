@@ -20,7 +20,21 @@ class proyek(models.Model):
 		
 	def __str__(self):
 		return self.nama
+	
+	def get_organisasi(self):
+		return ', '.join(self.organisasi.all().values_list('nama_organisasi',flat=True))
 
+
+class organisasi(models.Model):
+	nama_organisasi = models.CharField(max_length=255, blank=True)
+	narasumber = models.CharField(max_length=50, verbose_name="Narasumber")
+	proyek = models.ForeignKey(proyek, related_name='organisasi', on_delete=models.CASCADE)
+	
+	class Meta:
+		db_table = 'organisasi'
+	
+	def __str__(self):
+		return self.nama_organisasi
 
 class perangkat(models.Model):
 	perangkat = JSONField()
@@ -33,15 +47,6 @@ class perangkat(models.Model):
 	def __str__(self):
 		return self.perangkat
 
+	
 
-class organisasi(models.Model):
-	proyek = models.ForeignKey(proyek, on_delete=models.CASCADE)
-	nama_organisasi = models.CharField(max_length=255, blank=True)
-	narasumber = models.CharField(max_length=50, verbose_name="Narasumber")
-	
-	class Meta:
-		db_table='organisasi'
-	
-	def __str__(self):
-		return self.nama_organisasi
 

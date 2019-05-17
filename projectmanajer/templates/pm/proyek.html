@@ -74,7 +74,8 @@
 
                         <div class="col-lg-12 text-right">
                             <label class="display-block text-semibold">
-                                <button type="button" class="btn bg-blue" onclick="additem_pegawai_diusulkan();">
+                                <button type="button" class="btn bg-blue add-form-row"
+                                        onclick="additem_pegawai_diusulkan();">
                                     Tambah Organisasi
                                     <i class="glyphicon glyphicon-tasasition-right"></i></button>
 
@@ -130,14 +131,14 @@
             labelOrganisasi.setAttribute('class', 'control-label col-lg-2');
             divInput.setAttribute('class', 'col-lg-9');
 
-            labelOrganisasi.innerHTML = "Organisasi";
+            labelOrganisasi.innerHTML = "Nama Organisasi";
 
             var inputOrganisasi = document.createElement('input');
             inputOrganisasi.setAttribute('class', 'form-control');
             inputOrganisasi.setAttribute('type', 'text');
             inputOrganisasi.setAttribute('placeholder', 'Masukkan Organisasi');
-            inputOrganisasi.setAttribute('name', 'form-[' + i + ']-nama_organisasi');
-            inputOrganisasi.setAttribute('id', 'id_form-[' + i + ']-nama_organisasi');
+            inputOrganisasi.setAttribute('name', 'form-' + i + '-nama_organisasi');
+            inputOrganisasi.setAttribute('id', 'id_form-' + i + '-nama_organisasi');
 
 
             var hapus = document.createElement('span');
@@ -145,15 +146,19 @@
             divInput.appendChild(inputOrganisasi);
             divHapus.appendChild(hapus);
 
-            hapus.innerHTML = '<button class="btn btn-xs btn-danger"><i class="icon-trash"></i></button>';
+            hapus.innerHTML = '<button class="btn btn-xs btn-danger" ><i class="icon-trash"></i></button>';
             //                membuat aksi delete element
             hapus.onclick = function () {
                 divForm.parentNode.removeChild(divForm);
+                i -= 1;
+                $('#id_form-TOTAL_FORMS').val(i);
             };
-
-            i++;
-
+            i += 1;
+            $('#id_form-TOTAL_FORMS').val(i);
 
         }
+
+
     </script>
+
 {% endblock %}

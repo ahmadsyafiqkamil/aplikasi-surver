@@ -7,7 +7,7 @@
         <div class="content-wrapper">
 
             <!-- Advanced login -->
-            <form action="{%url 'register'%}" method = 'POST' >
+            <form action="{%url 'accounts:register'%}" method = 'POST' >
                 {% csrf_token %}
                 <div class="panel panel-body login-form">
                     <div class="text-center">

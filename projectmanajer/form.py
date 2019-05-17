@@ -5,6 +5,7 @@ from accounts.models import User
 
 
 class proyekForm(forms.ModelForm):
+	
 	class Meta:
 		model = proyek
 		fields = ('nama', 'deskripsi', 'user','pjProyek')
