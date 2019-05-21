@@ -22,9 +22,13 @@ class proyek(models.Model):
 		return self.nama
 	
 	def get_organisasi(self):
-		return ', '.join(self.organisasi.all().values_list('nama_organisasi',flat=True))
+		return self.organisasi.all().values_list('nama_organisasi', flat=True)
+		# return ', '.join(self.organisasi.all().values_list('nama_organisasi',flat=True))
 
-
+	# def get_organisasi_by(self):
+	# 	return self.organisasi.all().values_list('nama_organisasi',flat=True)
+	
+		
 class organisasi(models.Model):
 	nama_organisasi = models.CharField(max_length=255, blank=True)
 	narasumber = models.CharField(max_length=50, verbose_name="Narasumber")

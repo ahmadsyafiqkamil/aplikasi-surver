@@ -5,7 +5,7 @@ from accounts.models import User
 
 
 class proyekForm(forms.ModelForm):
-	
+	field1 = forms.ModelChoiceField(queryset=User.objects.filter(staff=True))
 	class Meta:
 		model = proyek
 		fields = ('nama', 'deskripsi', 'user','pjProyek')
@@ -48,6 +48,7 @@ class proyekForm(forms.ModelForm):
 				'placeholder': 'Masukkan Nama Penanggung Jawab Proyek',
 				
 			}),
+			
 			
 			
 		}
